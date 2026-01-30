@@ -1,5 +1,5 @@
 ---
-name: github-issue-refining
+name: issue-refine
 description: Refine GitHub issues by creating WHAT/WHY/HOW sections and preparing them for implementation. Adds issues to GitHub Projects V2, sets status to "Ready", and manages iterations.
 argument-hint: "[issue-number|issue-url] [--iteration=<name>] [--analyze-service=<service>]"
 --- # GITHUB ISSUE REFINEMENT COMMAND **Purpose:** Transform GitHub issues into refined specifications with WHAT/WHY/HOW sections, then automatically:
