@@ -1,6 +1,7 @@
 ---
 name: github-project-integration
 description: Shared skill for GitHub Projects V2 API operations. Includes GraphQL mutations for adding issues, updating status, and managing iterations.
+user-invocable: false
 --- # GITHUB PROJECTS V2 INTEGRATION SKILL **Purpose:** Provide reusable patterns and helpers for interacting with GitHub Projects V2 API via GraphQL. Used by:
 - `/github-issue-refining` command
 - Other automation that needs project management --- ## PROJECT CONFIGURATION ### your project Project (GitHub) ```json

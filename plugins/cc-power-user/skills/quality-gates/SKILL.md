@@ -1,6 +1,7 @@
 ---
 name: quality-gates
 description: Shared quality gates that all development phases must pass before proceeding to the next phase
+user-invocable: false
 ---
 
 # Shared Quality Gates
