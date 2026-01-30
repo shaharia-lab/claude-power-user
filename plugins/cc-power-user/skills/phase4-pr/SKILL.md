@@ -2,7 +2,9 @@
 name: phase4-pr
 description: Create comprehensive PR description and handoff for human review after all RL loop quality gates pass. Final phase of autonomous development workflow.
 argument-hint: "[pr-number]"
---- # PHASE 4: HUMAN REVIEW HANDOFF SKILL **Purpose:** Prepare a perfect PR for human review focused on business logic validation. --- ## PREREQUISITES Before starting Phase 4:
+---
+
+# PHASE 4: HUMAN REVIEW HANDOFF SKILL **Purpose:** Prepare a perfect PR for human review focused on business logic validation. --- ## PREREQUISITES Before starting Phase 4:
 - ✅ All RL loop quality gates passed
 - ✅ All tests passing
 - ✅ No blocker review comments

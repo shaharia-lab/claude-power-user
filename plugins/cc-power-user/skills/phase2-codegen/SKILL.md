@@ -2,7 +2,9 @@
 name: phase2-codegen
 description: Generate production-quality code following acceptance criteria from refined issue, with comprehensive tests and documentation. Use after issue refinement (Phase 1) is complete.
 argument-hint: "[issue-number-or-description]"
---- # PHASE 2: CODE GENERATION SKILL **Purpose:** Generate complete, production-quality implementation based on refined issue. --- ## PREREQUISITES Before starting Phase 2:
+---
+
+# PHASE 2: CODE GENERATION SKILL **Purpose:** Generate complete, production-quality implementation based on refined issue. --- ## PREREQUISITES Before starting Phase 2:
 - ✅ Issue contains WHAT, WHY, and HOW sections
 - ✅ User has approved implementation (if issue was just refined) --- ## AGENT DELEGATION (RECOMMENDED) For complex implementations, delegate to the appropriate developer agent based on the service being modified: ### Service Detection | File Pattern | Service | Developer Agent |
 |--------------|---------|-----------------|

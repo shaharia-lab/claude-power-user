@@ -2,7 +2,9 @@
 name: phase3-rl-loop
 description: Iteratively improve code through CI/CD feedback until all quality gates pass. Use after code generation (Phase 2) to perfect implementation through automated testing and review.
 argument-hint: "[branch-name]"
---- # PHASE 3: REINFORCEMENT LEARNING LOOP SKILL **Purpose:** Iteratively improve code until ALL quality gates pass through automated feedback. --- ## LOOP OVERVIEW This is where good code becomes great code. You'll iterate through:
+---
+
+# PHASE 3: REINFORCEMENT LEARNING LOOP SKILL **Purpose:** Iteratively improve code until ALL quality gates pass through automated feedback. --- ## LOOP OVERVIEW This is where good code becomes great code. You'll iterate through:
 1. Pre-commit validation
 2. Commit and push
 3. CI/CD monitoring

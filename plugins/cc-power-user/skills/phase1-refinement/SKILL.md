@@ -174,6 +174,7 @@ ${CURRENT_BODY} ---
 EOF # Update the issue body gh issue edit $ISSUE_NUMBER --body-file "$TEMP_FILE" # Verify gh issue view $ISSUE_NUMBER --json body -q '.body' | grep "ISSUE REFINEMENT" # Clean up rm "$TEMP_FILE" ``` **Method 2: Direct inline update:** ```bash CURRENT_BODY=$(gh issue view <issue-number> --json body -q '.body') UPDATED_BODY="$CURRENT_BODY --- ## 🔍 ISSUE REFINEMENT [Insert WHAT/WHY/HOW sections] --- **Refinement completed.** Ready for implementation. " gh issue edit <issue-number> --body "$UPDATED_BODY" ``` 3. **Add labels:** - `refined` - `complexity:low` OR `complexity:medium` OR `complexity:high` - Any other relevant labels (feature, bug, etc.) ```bash gh issue edit <issue-number> \ --add-label refined \ --add-label complexity:<assessed-level> ``` 4. **Refinement body format:**
 ```markdown
 ---
+
 ## 🔍 ISSUE REFINEMENT This issue has been analyzed and refined with implementation details. [Insert WHAT section] [Insert WHY section] [Insert HOW section] ---
 **Refinement completed.** Ready for implementation.
 ``` **Remember:** Use `gh issue edit --body` for refinement, NOT `gh issue comment`. --- ## STEP 6: REQUEST USER PERMISSION **Stop here and ask:** ```markdown
