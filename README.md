@@ -33,27 +33,27 @@ Install plugins:
 
 **Commands**:
 ```bash
-/shaharia-lab-cc-power-user:issue-refine 123
-/shaharia-lab-cc-power-user:develop-issue 456
-/shaharia-lab-cc-power-user:backend-developer Add API endpoint
-/shaharia-lab-cc-power-user:security-guardian Audit payment module
+/cc-power-user:issue-refine 123
+/cc-power-user:develop-issue 456
+/cc-power-user:backend-developer Add API endpoint
+/cc-power-user:security-guardian Audit payment module
 ```
 
 [View plugin documentation →](./plugins/cc-power-user/README.md)
 
 ## Usage
 
-After installation, use the namespaced commands:
+After installation, use the plugin commands (namespace is automatically `cc-power-user:`):
 
 ```bash
 # Workflow commands
-/shaharia-lab-cc-power-user:issue-refine <issue-number>
-/shaharia-lab-cc-power-user:develop-issue <issue-number>
+/cc-power-user:issue-refine <issue-number>
+/cc-power-user:develop-issue <issue-number>
 
 # Direct agent usage
-/shaharia-lab-cc-power-user:backend-developer <task>
-/shaharia-lab-cc-power-user:frontend-developer <task>
-/shaharia-lab-cc-power-user:security-guardian <task>
+/cc-power-user:backend-developer <task>
+/cc-power-user:frontend-developer <task>
+/cc-power-user:security-guardian <task>
 ```
 
 ## Future Plugins
