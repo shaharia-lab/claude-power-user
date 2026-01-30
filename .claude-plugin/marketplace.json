@@ -1,0 +1,35 @@
+{
+  "name": "shaharia-lab",
+  "owner": {
+    "name": "Shaharia Lab",
+    "email": "hello@shaharia.com"
+  },
+  "metadata": {
+    "description": "Comprehensive AI agent systems and development workflows for Claude Code CLI",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "cc-power-user",
+      "source": "./plugins/cc-power-user",
+      "description": "20 specialized agents, 2 workflow commands, and 7 reusable skills for autonomous development with Claude Code CLI",
+      "version": "1.0.0",
+      "author": {
+        "name": "Shaharia Lab"
+      },
+      "homepage": "https://github.com/shaharia-lab/claude-power-user",
+      "repository": "https://github.com/shaharia-lab/claude-power-user",
+      "license": "MIT",
+      "keywords": [
+        "engineering",
+        "automation",
+        "workflows",
+        "agents",
+        "quality-assurance",
+        "security"
+      ],
+      "category": "development",
+      "tags": ["backend", "frontend", "cli", "documentation", "security"]
+    }
+  ]
+}

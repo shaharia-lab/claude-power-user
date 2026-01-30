@@ -1,0 +1,19 @@
+{
+  "name": "cc-power-user",
+  "description": "20 specialized agents, 2 workflow commands, and 7 reusable skills for autonomous development with Claude Code CLI",
+  "version": "1.0.0",
+  "author": {
+    "name": "Shaharia Lab"
+  },
+  "homepage": "https://github.com/shaharia-lab/claude-power-user",
+  "repository": "https://github.com/shaharia-lab/claude-power-user",
+  "license": "MIT",
+  "keywords": [
+    "engineering",
+    "automation",
+    "workflows",
+    "agents",
+    "quality-assurance",
+    "security"
+  ]
+}
