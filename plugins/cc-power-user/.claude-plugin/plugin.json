@@ -1,7 +1,7 @@
 {
   "name": "cc-power-user",
   "description": "20 specialized agents, 2 workflow commands, and 7 reusable skills for autonomous development with Claude Code CLI",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": {
     "name": "Shaharia Lab"
   },
