@@ -7,7 +7,7 @@
   },
   "metadata": {
     "description": "Comprehensive AI agent systems and development workflows for Claude Code CLI",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
@@ -31,6 +31,28 @@
       ],
       "category": "development",
       "tags": ["backend", "frontend", "cli", "documentation", "security"]
+    },
+    {
+      "name": "code-navigator",
+      "source": "./plugins/code-navigator",
+      "description": "Efficient code navigation plugin for Claude Code CLI using the codenav tool. Save up to 92% on token usage by navigating codebases intelligently instead of blindly reading files",
+      "version": "1.0.0",
+      "author": {
+        "name": "Shaharia Lab"
+      },
+      "homepage": "https://github.com/shaharia-lab/claude-code-plugins",
+      "repository": "https://github.com/shaharia-lab/claude-code-plugins",
+      "license": "MIT",
+      "keywords": [
+        "navigation",
+        "code-analysis",
+        "token-efficiency",
+        "call-graphs",
+        "dependencies",
+        "code-exploration"
+      ],
+      "category": "development",
+      "tags": ["navigation", "analysis", "performance", "cli", "backend", "frontend"]
     }
   ]
 }
