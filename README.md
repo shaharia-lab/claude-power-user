@@ -13,10 +13,47 @@ Add the marketplace:
 Install plugins:
 
 ```bash
+# Install Code Navigator
+/plugin install code-navigator@shaharia-lab
+
+# Install CC Power User
 /plugin install cc-power-user@shaharia-lab
 ```
 
 ## Available Plugins
+
+### Code Navigator (v1.0.0)
+
+Efficient code navigation using codenav CLI. Save up to 92% on token usage by navigating codebases intelligently.
+
+**Features**:
+- Codenav-based navigation skill
+- Token-efficient code exploration
+- Call graph analysis
+- Dependency tracing
+- Smart function finding
+
+**Benefits**:
+- 87-92% token savings vs blind file reading
+- Faster code understanding
+- Precise navigation to relevant code
+- Architectural insights without reading files
+
+**Usage**:
+```bash
+# Automatic - just ask questions
+"How does authentication work?"
+"Find where data comes from"
+
+# Manual invocation
+/codenav-navigation functionName
+```
+
+**Requires**: `codenav` CLI tool and indexed codebase
+
+[View plugin documentation →](./plugins/code-navigator/README.md)
+
+---
 
 ### CC Power User (v1.0.0)
 
@@ -59,9 +96,10 @@ After installation, use the plugin commands (namespace is automatically `cc-powe
 ## Future Plugins
 
 More plugins coming soon:
-- Security Auditor - Comprehensive security scanning
-- Deployment Tools - Infrastructure automation
-- Performance Analyzer - Performance profiling
+- Security Auditor - Comprehensive security scanning and vulnerability detection
+- Deployment Tools - Infrastructure automation and deployment workflows
+- Performance Analyzer - Performance profiling and optimization recommendations
+- Test Automation - Automated test generation and execution
 
 ## Contributing
 
