@@ -1,0 +1,19 @@
+{
+  "name": "power-user-basic",
+  "description": "5 essential skills for engineering, code review, architecture audit, security audit, and documentation maintenance — works with any project.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Shaharia Lab"
+  },
+  "homepage": "https://github.com/shaharia-lab/claude-power-user",
+  "repository": "https://github.com/shaharia-lab/claude-power-user",
+  "license": "MIT",
+  "keywords": [
+    "engineering",
+    "code-review",
+    "architecture",
+    "security",
+    "documentation",
+    "quality-assurance"
+  ]
+}
