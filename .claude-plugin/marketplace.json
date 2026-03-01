@@ -14,7 +14,7 @@
       "name": "cc-power-user",
       "source": "./plugins/cc-power-user",
       "description": "20 specialized agents, 2 workflow commands, and 7 reusable skills for autonomous development with Claude Code CLI",
-      "version": "1.0.0",
+      "version": "1.0.4",
       "author": {
         "name": "Shaharia Lab"
       },
@@ -53,6 +53,28 @@
       ],
       "category": "development",
       "tags": ["navigation", "analysis", "performance", "cli", "backend", "frontend"]
+    },
+    {
+      "name": "power-user-basic",
+      "source": "./plugins/power-user-basic",
+      "description": "5 essential skills for engineering, code review, architecture audit, security audit, and documentation maintenance — works with any project",
+      "version": "1.0.0",
+      "author": {
+        "name": "Shaharia Lab"
+      },
+      "homepage": "https://github.com/shaharia-lab/claude-power-user",
+      "repository": "https://github.com/shaharia-lab/claude-power-user",
+      "license": "MIT",
+      "keywords": [
+        "engineering",
+        "code-review",
+        "architecture",
+        "security",
+        "documentation",
+        "quality-assurance"
+      ],
+      "category": "development",
+      "tags": ["review", "security", "architecture", "engineering", "documentation"]
     }
   ]
 }

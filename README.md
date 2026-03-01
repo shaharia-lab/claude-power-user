@@ -13,11 +13,14 @@ Add the marketplace:
 Install plugins:
 
 ```bash
-# Install Code Navigator
-/plugin install code-navigator@shaharia-lab
-
 # Install CC Power User
 /plugin install cc-power-user@shaharia-lab
+
+# Install Power User Basic
+/plugin install power-user-basic@shaharia-lab
+
+# Install Code Navigator
+/plugin install code-navigator@shaharia-lab
 ```
 
 ## Available Plugins
@@ -55,7 +58,7 @@ Efficient code navigation using codenav CLI. Save up to 92% on token usage by na
 
 ---
 
-### CC Power User (v1.0.0)
+### CC Power User (v1.0.4)
 
 20 specialized agents, 2 workflow commands, and 7 reusable skills for autonomous development.
 
@@ -78,19 +81,50 @@ Efficient code navigation using codenav CLI. Save up to 92% on token usage by na
 
 [View plugin documentation →](./plugins/cc-power-user/README.md)
 
+---
+
+### Power User Basic (v1.0.0)
+
+5 essential, project-agnostic skills for everyday development — works with any project, language, or framework.
+
+**Skills**:
+- `/engineering` — Implement features, fix bugs, refactor code
+- `/context-updater` — Keep CLAUDE.md, README.md, and docs accurate after changes
+- `/pr-reviewer` — 11-dimension code review (correctness, security, performance, architecture, UI/UX, observability)
+- `/architect-reviewer` — Architecture audit with 100-point checklist and code smell detection
+- `/security-reviewer` — Security audit with CWE references, OWASP checks, and remediation guidance
+
+**Usage**:
+```bash
+/engineering "fix the authentication bug"
+/pr-reviewer 42
+/security-reviewer
+/architect-reviewer
+/context-updater
+```
+
+[View plugin documentation →](./plugins/power-user-basic/README.md)
+
 ## Usage
 
-After installation, use the plugin commands (namespace is automatically `cc-power-user:`):
+After installation, use the plugin commands:
 
 ```bash
-# Workflow commands
+# CC Power User - workflow commands
 /cc-power-user:issue-refine <issue-number>
 /cc-power-user:develop-issue <issue-number>
 
-# Direct agent usage
+# CC Power User - direct agent usage
 /cc-power-user:backend-developer <task>
 /cc-power-user:frontend-developer <task>
 /cc-power-user:security-guardian <task>
+
+# Power User Basic - project-agnostic skills
+/engineering <task>
+/pr-reviewer <pr-number>
+/security-reviewer
+/architect-reviewer
+/context-updater
 ```
 
 ## Future Plugins
@@ -118,4 +152,4 @@ MIT - See [LICENSE](LICENSE) file for details.
 
 **Repository**: https://github.com/shaharia-lab/claude-power-user
 **Marketplace**: `shaharia-lab`
-**Version**: 1.0.0
+**Version**: 1.1.0
