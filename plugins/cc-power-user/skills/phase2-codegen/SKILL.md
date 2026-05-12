@@ -26,7 +26,7 @@ Map the issue's HOW section to one of the developer agents installed alongside t
 
 Delegate for service-specific changes. Self-implement for simple cross-cutting changes (small config/docs). For multi-service changes, run sequentially when dependent or in parallel when independent.
 
-The delegation prompt template lives in the orchestrator workflow (`develop-issue` Step 2A).
+The delegation prompt template lives in the orchestrator workflow (`github-issue-to-pr` Step 2A).
 
 ---
 

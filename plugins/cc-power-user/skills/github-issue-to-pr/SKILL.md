@@ -1,5 +1,5 @@
 ---
-name: develop-issue
+name: github-issue-to-pr
 description: Transform a GitHub issue into a production-ready pull request with automated PR review. Executes full workflow including refinement check, code generation, RL loop, testing, PR creation, automated review, feedback application, and re-verification before marking ready for human review.
 argument-hint: "[issue-number|issue-url]"
 disable-model-invocation: true
@@ -44,7 +44,7 @@ All three checks must pass.
 
 Read the issue. It must have **WHAT**, **WHY**, **HOW** sections. If missing:
 
-> Issue #N is not refined. Run the `issue-refine` skill from this plugin first (e.g. `/cc-power-user:issue-refine N`), then re-run this workflow. STOP.
+> Issue #N is not refined. Run the `github-issue-refiner` skill from this plugin first (e.g. `/cc-power-user:github-issue-refiner N`), then re-run this workflow. STOP.
 
 Do not refine automatically.
 

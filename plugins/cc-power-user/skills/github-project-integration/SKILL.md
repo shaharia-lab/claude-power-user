@@ -207,9 +207,9 @@ Backlog → Ready → In Progress → In Review → Done
 
 | From → To | Trigger | Status Option ID | Where |
 |---|---|---|---|
-| Backlog → Ready | Refinement complete | `READY_OPTION_ID_PLACEHOLDER` | `issue-refine` |
-| Ready → In Progress | Implementation starts | `IN_PROGRESS_OPTION_ID_PLACEHOLDER` | `develop-issue` Phase 1 |
-| In Progress → In Review | PR marked ready | `IN_REVIEW_OPTION_ID_PLACEHOLDER` | `develop-issue` Phase 4 (Step 3H) |
+| Backlog → Ready | Refinement complete | `READY_OPTION_ID_PLACEHOLDER` | `github-issue-refiner` |
+| Ready → In Progress | Implementation starts | `IN_PROGRESS_OPTION_ID_PLACEHOLDER` | `github-issue-to-pr` Phase 1 |
+| In Progress → In Review | PR marked ready | `IN_REVIEW_OPTION_ID_PLACEHOLDER` | `github-issue-to-pr` Phase 4 (Step 3H) |
 | In Review → Done | PR merged | `DONE_OPTION_ID_PLACEHOLDER` | GitHub Actions (or manual) |
 
 Each transition uses the **Update status** mutation above. For Ready → In Progress and In Progress → In Review, fetch `PROJECT_ITEM_ID` with "Get existing project item ID" first.

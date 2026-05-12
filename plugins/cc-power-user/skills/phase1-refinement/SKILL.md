@@ -8,7 +8,7 @@ argument-hint: "[issue-number]"
 
 Transform an ambiguous issue into a refined spec with WHAT / WHY / HOW sections, then update the issue body.
 
-Primarily invoked by `issue-refine`. The `develop-issue` workflow does NOT auto-refine — issues must already be refined.
+Primarily invoked by `github-issue-refiner`. The `github-issue-to-pr` workflow does NOT auto-refine — issues must already be refined.
 
 ---
 
@@ -158,7 +158,7 @@ Complexity: Low | Medium | High
 Components affected: N
 Risks: [None | Low | Medium | High]
 
-Option 1: Start implementation now (run the `develop-issue` skill, e.g. `/cc-power-user:develop-issue N`)
+Option 1: Start implementation now (run the `github-issue-to-pr` skill, e.g. `/cc-power-user:github-issue-to-pr N`)
 Option 2: Wait — I'll stop here.
 
 Type `1` or `2`.

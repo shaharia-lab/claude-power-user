@@ -1,6 +1,6 @@
 # Issue Refinement Example
 
-Example of issue before and after refinement with `/issue-refine`.
+Example of issue before and after refinement with `/cc-power-user:github-issue-refiner`.
 
 ## Before
 

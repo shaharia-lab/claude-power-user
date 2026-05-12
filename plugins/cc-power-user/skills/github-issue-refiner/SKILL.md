@@ -1,5 +1,5 @@
 ---
-name: issue-refine
+name: github-issue-refiner
 description: Refine GitHub issues by creating WHAT/WHY/HOW sections and preparing them for implementation. Adds issues to GitHub Projects V2, sets status to "Ready", and assigns the current iteration.
 argument-hint: "[issue-number|issue-url] [--iteration=<name>] [--analyze-service=<service>]"
 ---
@@ -172,7 +172,7 @@ gh api graphql -f query='
 
 ## NEXT STEP
 
-Once refined and Ready, the user can implement with the `develop-issue` skill (e.g. `/cc-power-user:develop-issue <n>`).
+Once refined and Ready, the user can implement with the `github-issue-to-pr` skill (e.g. `/cc-power-user:github-issue-to-pr <n>`).
 
 ---
 
@@ -181,4 +181,4 @@ Once refined and Ready, the user can implement with the `develop-issue` skill (e
 - Update the issue **body** with `gh issue edit --body[-file]`, never `gh issue comment`.
 - Read `phase1-refinement` before drafting WHAT/WHY/HOW.
 - Skip Projects V2 mutations entirely if `--no-project` or the repo has no board.
-- This command does not start implementation. The `develop-issue` workflow does.
+- This command does not start implementation. The `github-issue-to-pr` workflow does.

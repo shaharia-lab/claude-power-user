@@ -57,12 +57,12 @@ All commands are automatically namespaced with `cc-power-user:` to avoid conflic
 
 **Issue Refinement**: Transform vague issues into structured WHAT/WHY/HOW specifications
 ```bash
-/cc-power-user:issue-refine 123
+/cc-power-user:github-issue-refiner 123
 ```
 
 **Full Development**: Autonomous implementation from refined issue to PR
 ```bash
-/cc-power-user:develop-issue 456
+/cc-power-user:github-issue-to-pr 456
 ```
 
 ### Direct Agent Usage
@@ -137,14 +137,14 @@ Easily customizable for Node.js, Python, Vue, Java, or other stacks - just updat
 
 ## How It Works
 
-**Issue Refinement Workflow** (`/cc-power-user:issue-refine`):
+**Issue Refinement Workflow** (`/cc-power-user:github-issue-refiner`):
 1. Fetches GitHub issue
 2. Analyzes context and delegates to appropriate analyzer agents
 3. Creates WHAT (scope + acceptance criteria), WHY (business value), HOW (technical approach)
 4. Updates issue body with refinement
 5. Adds to GitHub Project board, sets status to "Ready"
 
-**Development Workflow** (`/cc-power-user:develop-issue`):
+**Development Workflow** (`/cc-power-user:github-issue-to-pr`):
 1. Validates issue is refined and status is "Ready"
 2. Creates git worktree, updates status to "In Progress"
 3. Delegates to developer agents (backend/frontend/cli) for implementation with tests
