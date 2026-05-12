@@ -115,10 +115,10 @@ Generate guidelines and automate specialized tasks:
 
 Reusable workflow components:
 
-- **phase1_refinement**: Transform issues into structured WHAT/WHY/HOW specifications. Analyzes context, creates scope, explains business value, provides technical approach.
-- **phase2_codegen**: Autonomous code generation following established patterns. Reads guidelines, analyzes existing code, implements with tests, updates documentation.
-- **phase3_rl_loop**: Quality gates with auto-remediation (max 10 iterations). Runs linting, tests, security scans, architecture review, bug analysis. Auto-fixes issues via specialized agents.
-- **phase4_pr**: Professional PR creation and handoff. Generates comprehensive description, creates PR, updates issue status, notifies reviewers.
+- **phase1-refinement**: Transform issues into structured WHAT/WHY/HOW specifications. Analyzes context, creates scope, explains business value, provides technical approach.
+- **phase2-codegen**: Autonomous code generation following established patterns. Reads guidelines, analyzes existing code, implements with tests, updates documentation.
+- **phase3-rl-loop**: Quality gates with auto-remediation (max 10 iterations). Runs linting, tests, security scans, architecture review, bug analysis. Auto-fixes issues via specialized agents.
+- **phase4-pr**: Draft PR + automated review + feedback loop before marking ready. Generates description, creates draft PR, waits for CI, runs automated review, applies critical/high fixes, re-verifies, then marks ready.
 - **github-project-integration**: Manage GitHub Projects V2 integration. Add issues to boards, update statuses, assign iterations, set fields, link PRs.
 - **quality-gates**: Standard quality checks. Linting, unit tests, integration tests, E2E tests, security scans, architecture review, bug analysis.
 - **pr-review-ci**: Parse CI/CD feedback and auto-remediate. Handles GitHub Actions, CircleCI, GitLab CI. Auto-fixes linting, analyzes test failures, triggers re-runs.
