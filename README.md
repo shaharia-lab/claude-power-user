@@ -73,8 +73,8 @@ Efficient code navigation using codenav CLI. Save up to 92% on token usage by na
 
 **Commands**:
 ```bash
-/cc-power-user:issue-refine 123
-/cc-power-user:develop-issue 456
+/cc-power-user:github-issue-refiner 123
+/cc-power-user:github-issue-to-pr 456
 /cc-power-user:backend-developer Add API endpoint
 /cc-power-user:security-guardian Audit payment module
 ```
@@ -111,8 +111,8 @@ After installation, use the plugin commands:
 
 ```bash
 # CC Power User - workflow commands
-/cc-power-user:issue-refine <issue-number>
-/cc-power-user:develop-issue <issue-number>
+/cc-power-user:github-issue-refiner <issue-number>
+/cc-power-user:github-issue-to-pr <issue-number>
 
 # CC Power User - direct agent usage
 /cc-power-user:backend-developer <task>

@@ -1,7 +1,7 @@
 {
   "name": "cc-power-user",
-  "description": "20 specialized agents, 2 workflow commands, and 7 reusable skills for autonomous development with Claude Code CLI",
-  "version": "1.0.4",
+  "description": "Autonomous GitHub issue-to-PR pipeline for Claude Code. Refines an issue into a WHAT/WHY/HOW spec, generates code via stack-specific developer agents, iterates on CI feedback until all quality gates pass, runs an automated PR review, and ships a draft-then-ready pull request — all without human babysitting. Ships 20 developer/QA/research agents (backend, frontend, CLI, website, docs, plus security, architecture, bug-finder, pr-reviewer) and 9 composable skills.",
+  "version": "2.0.0",
   "author": {
     "name": "Shaharia Lab"
   },
