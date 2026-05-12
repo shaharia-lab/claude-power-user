@@ -12,11 +12,11 @@ Iterate pre-commit → commit/push → CI → review → fix, until all gates pa
 
 ## SPECIALIST DELEGATION
 
-During the loop, delegate when criteria are met:
+During the loop, delegate when criteria are met. Use only agents that are installed alongside this plugin; the examples below are common but optional.
 
-- **`golang-lint-fixer`** — golangci-lint has ≥5 issues, or any complex issue (ineffassign/errcheck/govet), or issues span multiple files. Prompt: `Fix all golangci-lint issues. Errors: {output}. Run \`make lint\` and fix systematically.`
-- **`openapi-schema-manager`** — new/modified API endpoints, or CI fails on OpenAPI validation. Prompt: `Update OpenAPI schema for: {endpoint changes}. Analyze handlers and update accordingly.`
-- **`security-guardian`** — security scan findings. Prompt: `Review and fix these vulnerabilities: {scan output}.`
+- **Bulk lint repair** — if the linter reports ≥5 issues, or issues spanning multiple files, delegate to a stack-specific lint-fixer (e.g. `golang-lint-fixer` for Go). Prompt: `Fix all lint issues. Errors: {output}. Run the project's lint command and fix systematically.`
+- **API schema drift** — new/modified API endpoints, or CI fails on schema validation. Delegate to a schema-manager agent (e.g. `openapi-schema-manager`). Prompt: `Update the API schema for: {endpoint changes}. Analyze handlers and update accordingly.`
+- **Security findings** — security scan flags vulnerabilities → `security-guardian`. Prompt: `Review and fix these vulnerabilities: {scan output}.`
 
 ---
 

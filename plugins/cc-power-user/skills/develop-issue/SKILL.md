@@ -21,10 +21,10 @@ These rules apply to every phase. Do not restate, just follow.
 2. Phases run in order. Never skip.
 3. Stay in RL loop (Phase 3) until ALL quality gates pass; max 10 iterations, no human help mid-loop.
 4. Read the relevant skill at the top of each phase.
-5. Worktree path: `/tmp/<repo>/.worktree/<issue-number>` — all work happens there.
+5. Worktree path: `/tmp/<project-name>/.worktree/<issue-number>` — all work happens there.
 6. Sub-agents NEVER commit or push. The orchestrator commits.
 7. Sub-agents MUST return a structured handoff (template in Phase 2B); validate before committing.
-8. Parallel sub-agent calls when independent; sequential when dependent. Call the same agent multiple times if refinement needed.
+8. Parallel sub-agent calls when independent; sequential when dependent.
 9. PR is created as draft and only marked ready after all checks pass.
 10. After PR is marked ready: update issue status to "In Review" (if Projects V2 configured) and STOP.
 
@@ -75,9 +75,9 @@ If not "Ready", report current status and STOP. The user must move it to Ready (
 ### 3. Worktree
 
 ```bash
-mkdir -p /tmp/<repo>/.worktree
-git worktree add /tmp/<repo>/.worktree/<issue-number> -b feature/issue-<issue-number>
-cd /tmp/<repo>/.worktree/<issue-number>
+mkdir -p /tmp/<project-name>/.worktree
+git worktree add /tmp/<project-name>/.worktree/<issue-number> -b feature/issue-<issue-number>
+cd /tmp/<project-name>/.worktree/<issue-number>
 ```
 
 On failure: `git worktree list && git worktree repair`, then retry.
@@ -132,28 +132,28 @@ See the `github-project-integration` skill for the full transition reference.
 
 Read the `phase2-codegen` skill first.
 
-Four steps: 2A collect context → 2B delegate → 2C validate handoff → 2D commit.
+Three steps: 2A delegate → 2B validate handoff → 2C commit.
 
 ### Service detection
 
-| File pattern | Service | Context collector | Developer |
-|---|---|---|---|
-| backend paths, `*.go`, `internal/**`, `cmd/**` | Backend API | `backend-context-collector` | `backend-developer` |
-| `frontend/**`, `src/components/**`, `src/pages/**` | Frontend | `frontend-context-collector` | `frontend-developer` |
-| `cli/**`, `src/commands/**` | CLI | `cli-context-collector` | `cli-developer` |
-| `website/**` | Marketing site | `website-context-collector` | `website-developer` |
-| `docs-site/**`, `docs/**/*.md` | Docs site | `docs-site-context-collector` | `docs-site-developer` |
+Map the issue's HOW section to a single developer agent (or several, run in dependency order). Customise this table for your stack:
 
-### 2A — Context collection
+| Area of change | Developer agent |
+|---|---|
+| Backend / API | `backend-developer` |
+| Frontend | `frontend-developer` |
+| CLI | `cli-developer` |
+| Marketing site | `website-developer` |
+| Docs site | `docs-site-developer` |
 
-Delegate to the relevant context-collector(s) in parallel. Prompt them for a surgical summary (<2000 tokens) covering: current architectural patterns, recent changes (last 30 days), testing conventions, quality standards, anti-patterns to avoid.
+For cross-cutting changes (small config/docs), the orchestrator can self-implement instead of delegating.
 
-### 2B — Delegate to developer(s)
+### 2A — Delegate to developer(s)
 
-Run in parallel when independent, sequentially when one service depends on another. Use this prompt template:
+Run in parallel when independent, sequentially when one service depends on another. Prompt template:
 
 ```
-Implement issue #[N] in workspace /tmp/<repo>/.worktree/[N] on branch feature/issue-[N].
+Implement issue #[N] in workspace /tmp/<project-name>/.worktree/[N] on branch feature/issue-[N].
 
 ## WHAT
 {WHAT_SECTION}
@@ -164,17 +164,9 @@ Implement issue #[N] in workspace /tmp/<repo>/.worktree/[N] on branch feature/is
 ## HOW
 {HOW_SECTION}
 
-## CONTEXT
-{CONTEXT_COLLECTOR_OUTPUT}
-
 ## STANDARDS
-Test coverage ≥80%. Linting and type checking must pass.
-
-## DECISION FRAMEWORK
-- New tables → migration: YYYYMMDDHHMMSS_description.up.sql
-- New API endpoint → standard response format
-- Service complexity → repository pattern with interface
-- Edge case unclear → document assumption, choose safest option
+Test coverage ≥80%. Linting and type checking must pass. Follow this project's
+existing conventions (the developer agent already has stack-specific guidance).
 
 ## HANDOFF (MANDATORY — return this exact structure)
 
@@ -209,14 +201,14 @@ TRUE | FALSE - [reason]
 - Return the handoff above.
 ```
 
-### 2C — Validate handoff
+### 2B — Validate handoff
 
 Required: Files Modified, Tests Added (counts/coverage), Quality Checks, Decisions, Ready Status. Gates: Ready=TRUE, all tests passing, linting passed, coverage ≥80%, no blockers. If any fail, re-delegate with specific fixes; do not commit.
 
-### 2D — Commit (orchestrator only)
+### 2C — Commit (orchestrator only)
 
 ```bash
-cd /tmp/<repo>/.worktree/[N]
+cd /tmp/<project-name>/.worktree/[N]
 git add .
 git commit -m "$(cat <<'EOF'
 feat: [brief description]
@@ -258,10 +250,10 @@ while not all_gates_passed and iteration < 10:
 if iteration == 10: document remaining issues, request human help, STOP
 ```
 
-**Specialist delegations during the loop:**
-- ≥5 golangci-lint issues, or complex lint (ineffassign/errcheck/govet) → `golang-lint-fixer`
-- New/changed API endpoints → `openapi-schema-manager`
-- Security scan findings → `security-guardian`
+**Specialist delegations during the loop (only when the relevant agent exists in your install):**
+- Stack-specific linting that needs bulk repair → tech-specific lint-fixer agent (e.g. `golang-lint-fixer` for Go).
+- New/changed API endpoints → schema-manager agent (e.g. `openapi-schema-manager`).
+- Security scan findings → `security-guardian`.
 
 **Exit criteria (ALL true):**
 pre-commit pass · CI green · zero blocker comments · coverage maintained or improved · no security findings · performance acceptable.
@@ -280,7 +272,7 @@ Trigger pre-PR QA delegations as applicable, fix any critical/high findings, the
 
 **Step sequence:**
 1. Create PR as **draft** with comprehensive description (template in skill file), link `Closes #N`.
-2. Add labels: `ready-for-human-review`, `automated-review-done`, complexity label. Create labels if missing.
+2. Add labels: `ai-generated`, `ready-for-review`, complexity label. Create labels if missing.
 3. Wait for CI green.
 4. Delegate to `pr-reviewer`; parse findings.
 5. If critical/high found: fix, commit, push, wait for CI green again. If CI fails after fixes: STOP, request human help.
@@ -293,11 +285,13 @@ Trigger pre-PR QA delegations as applicable, fix any critical/high findings, the
 
 ## AVAILABLE SUB-AGENTS
 
-**Context collectors:** `backend-context-collector`, `frontend-context-collector`, `cli-context-collector`, `website-context-collector`, `docs-site-context-collector`
+The plugin ships a default set; override per project as needed.
 
 **Developers:** `backend-developer`, `frontend-developer`, `cli-developer`, `website-developer`, `docs-site-developer`
 
-**QA:** `security-guardian`, `architecture-guardian`, `bug-finder`, `pr-reviewer`, `golang-lint-fixer`, `openapi-schema-manager`
+**QA:** `security-guardian`, `architecture-guardian`, `bug-finder`, `pr-reviewer`
+
+**Stack-specific specialists (optional, use only if installed):** e.g. `golang-lint-fixer`, `openapi-schema-manager`
 
 ---
 

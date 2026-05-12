@@ -14,19 +14,19 @@ Generate complete, production-quality implementation from a refined issue.
 
 ## AGENT DELEGATION
 
-Delegate to the developer agent matching the affected service:
+Map the issue's HOW section to one of the developer agents installed alongside this skill:
 
-| File pattern | Service | Developer |
-|---|---|---|
-| backend service paths, `*.go`, `internal/**`, `cmd/**` | Backend API | `backend-developer` |
-| `frontend/**`, `src/components/**`, `src/pages/**` | Frontend | `frontend-developer` |
-| `cli/**`, `src/commands/**` | CLI | `cli-developer` |
-| `website/**` | Marketing site | `website-developer` |
-| `docs-site/**`, `docs/**/*.md` | Docs site | `docs-site-developer` |
+| Area of change | Developer agent |
+|---|---|
+| Backend / API | `backend-developer` |
+| Frontend | `frontend-developer` |
+| CLI | `cli-developer` |
+| Marketing site | `website-developer` |
+| Docs site | `docs-site-developer` |
 
-Delegate for service-specific changes. Self-implement for simple cross-cutting changes (small config/docs). For multi-service changes, run sequentially when dependent (backend → frontend) or in parallel when independent.
+Delegate for service-specific changes. Self-implement for simple cross-cutting changes (small config/docs). For multi-service changes, run sequentially when dependent or in parallel when independent.
 
-Delegation prompt template lives in the orchestrator workflow (`develop-issue` Step 2B).
+The delegation prompt template lives in the orchestrator workflow (`develop-issue` Step 2A).
 
 ---
 

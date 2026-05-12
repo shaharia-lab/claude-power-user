@@ -37,29 +37,30 @@ Look for `## WHAT`, `## WHY`, `## HOW` in the body.
 
 ### 3. Detect services (optional research)
 
-Scan title/body/labels for service hints:
+Scan title/body/labels for service hints. Match against whichever developer agents are installed in this plugin; common categories:
 
-| Hint | Service / agent |
+| Hint keywords | Developer agent |
 |---|---|
-| "backend", "API", "Go", "database", "server" | `backend` / `backend-developer` |
-| "frontend", "React", "UI", "component" | `frontend` / `frontend-developer` |
-| "CLI", "command-line" | `cli-developer` |
+| "backend", "API", "database", "server" | `backend-developer` |
+| "frontend", "UI", "component" | `frontend-developer` |
+| "CLI", "command-line", "terminal" | `cli-developer` |
 | "website", "marketing", "landing" | `website-developer` |
-| "docs", "Docusaurus", "documentation" | `docs-site-developer` |
+| "docs", "documentation" | `docs-site-developer` |
 
-If `--analyze-service=<s>` is set, use only that. Otherwise ask the user whether to run service-specific research before refining:
+If `--analyze-service=<s>` is set, use only that. Otherwise, deeper research before refining is **optional**. If you want it, ask the user:
 
 ```
 Detected services: <list>. Run service-specific research?
 y = run all, n = skip, <name> = run one only.
 ```
 
-Delegate prompt:
+If yes, delegate a read-only analysis (no code changes) to the matching developer agent:
+
 ```
 Analyze the codebase for context on this issue: <title>.
 Focus on affected modules, current implementations, patterns to follow,
 dependencies, and integration points. Return architectural context, file
-locations, and integration points.
+locations, and integration points. Do not write any code.
 ```
 
 Merge results into the refinement context.
