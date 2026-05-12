@@ -158,7 +158,7 @@ Complexity: Low | Medium | High
 Components affected: N
 Risks: [None | Low | Medium | High]
 
-Option 1: Start implementation now (`develop-issue N`)
+Option 1: Start implementation now (run the `develop-issue` skill, e.g. `/cc-power-user:develop-issue N`)
 Option 2: Wait — I'll stop here.
 
 Type `1` or `2`.

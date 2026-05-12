@@ -44,7 +44,7 @@ All three checks must pass.
 
 Read the issue. It must have **WHAT**, **WHY**, **HOW** sections. If missing:
 
-> Issue #N is not refined. Run `issue-refine N` first, then re-run this workflow. STOP.
+> Issue #N is not refined. Run the `issue-refine` skill from this plugin first (e.g. `/cc-power-user:issue-refine N`), then re-run this workflow. STOP.
 
 Do not refine automatically.
 

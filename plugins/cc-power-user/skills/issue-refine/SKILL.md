@@ -172,7 +172,7 @@ gh api graphql -f query='
 
 ## NEXT STEP
 
-Once refined and Ready, the user can implement with `develop-issue <n>`.
+Once refined and Ready, the user can implement with the `develop-issue` skill (e.g. `/cc-power-user:develop-issue <n>`).
 
 ---
 
