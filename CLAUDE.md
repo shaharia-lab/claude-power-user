@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Claude Power User is a Claude Code CLI **plugin marketplace** (`shaharia-lab`) containing three independently installable plugins. There are no build/test/lint commands — the project is entirely Markdown-based plugin definitions (agents, skills, reference docs) plus JSON manifests. Changes are validated by installing the plugin via `/plugin install` and exercising its skills/agents in Claude Code.
+Claude Power User is a Claude Code CLI **plugin marketplace** (`shaharia-lab`) containing four independently installable plugins. There are no build/test/lint commands — the project is entirely Markdown-based plugin definitions (agents, skills, reference docs) plus JSON manifests. Changes are validated by installing the plugin via `/plugin install` and exercising its skills/agents in Claude Code.
 
 ## Architecture
 
@@ -14,15 +14,16 @@ Claude Power User is a Claude Code CLI **plugin marketplace** (`shaharia-lab`) c
 
 Every plugin must **also** carry its own `.claude-plugin/plugin.json` (the per-plugin manifest). Without it, `/plugin install <name>@shaharia-lab` cannot discover the plugin even if the marketplace entry exists.
 
-### Three Plugins
+### Four Plugins
 
 | Plugin | Path | Version | Purpose |
 |--------|------|---------|---------|
 | **cc-power-user** | `plugins/cc-power-user/` | 2.0.0 | Autonomous GitHub issue-to-PR pipeline: 20 agents + 9 composable skills |
 | **code-navigator** | `plugins/code-navigator/` | 1.0.0 | Token-efficient code navigation via the external `codenav` CLI (87–92% token savings) |
 | **power-user-basic** | `plugins/power-user-basic/` | 1.0.0 | 5 project-agnostic skills (engineering, context-updater, pr-reviewer, architect-reviewer, security-reviewer) |
+| **github-maintenance** | `plugins/github-maintenance/` | 1.0.0 | Periodic repo maintenance. Ships `agent-context-sync` — a doctor for AI-context files (CLAUDE.md, AGENTS.md, .cursorrules, copilot-instructions). |
 
-Marketplace metadata version is tracked separately in `.claude-plugin/marketplace.json` under `metadata.version` (currently 1.1.0) — bump this when adding or removing plugins.
+Marketplace metadata version is tracked separately in `.claude-plugin/marketplace.json` under `metadata.version` (currently 1.2.0) — bump this when adding or removing plugins.
 
 ### Plugin Anatomy
 
@@ -65,6 +66,19 @@ All agents are namespaced as `/cc-power-user:<agent-name>` when invoked directly
 ### code-navigator
 
 A single skill (`codenav-navigation`) that teaches Claude to drive the external `codenav` CLI for indexed call-graph queries. Requires `codenav` on PATH and a pre-built index — the plugin itself ships only instructions.
+
+### github-maintenance
+
+Repo-agnostic maintenance skills designed for periodic execution. Currently ships one skill:
+
+- `/github-maintenance:agent-context-sync` — Doctor for AI-context files (CLAUDE.md, AGENTS.md, `.cursorrules`, `.github/copilot-instructions.md`). Five phases: discover → verify → lint → augment → output. **No-op when healthy** so it is safe on a weekly cron. **Conservative pruning** — only deletes claims provably wrong/stale; bloat and anti-patterns are flagged in the report but not removed. Supports `--dry-run` (report only) and default PR mode.
+
+The skill's behavior is governed by three reference files alongside `SKILL.md`:
+- `quality-spec.md` — required sections, length budgets, anti-pattern detectors (directory catalogues, manifest duplication, marketing language, stale TODOs).
+- `verification-patterns.md` — regex patterns + deterministic checks for counts, versions, paths, build commands, stack claims, and cross-file divergence.
+- `file-format-conventions.md` — per-file quirks (Markdown vs plain-text `.cursorrules`, canonical-file selection, whitespace preservation).
+
+When extending this plugin, keep `disable-model-invocation: true` on any skill that mutates docs — periodic runs must be user-triggered.
 
 ## Conventions
 
