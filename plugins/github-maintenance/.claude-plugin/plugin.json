@@ -1,0 +1,20 @@
+{
+  "name": "github-maintenance",
+  "description": "Maintenance skills for keeping repositories healthy over time. Currently ships agent-context-sync — a periodic, repo-agnostic doctor for AI-context files (CLAUDE.md, AGENTS.md, .cursorrules, .github/copilot-instructions.md) that verifies concrete claims against the repo, flags bloat against an opinionated quality spec, and proposes minimal edits via report-only or pull-request mode.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Shaharia Lab"
+  },
+  "homepage": "https://github.com/shaharia-lab/claude-power-user",
+  "repository": "https://github.com/shaharia-lab/claude-power-user",
+  "license": "MIT",
+  "keywords": [
+    "github",
+    "maintenance",
+    "documentation",
+    "claude-md",
+    "agents-md",
+    "ai-context",
+    "automation"
+  ]
+}

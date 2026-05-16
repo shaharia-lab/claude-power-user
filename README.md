@@ -21,6 +21,9 @@ Install plugins:
 
 # Install Code Navigator
 /plugin install code-navigator@shaharia-lab
+
+# Install GitHub Maintenance
+/plugin install github-maintenance@shaharia-lab
 ```
 
 ## Available Plugins
@@ -105,6 +108,32 @@ Efficient code navigation using codenav CLI. Save up to 92% on token usage by na
 
 [View plugin documentation →](./plugins/power-user-basic/README.md)
 
+---
+
+### GitHub Maintenance (v1.0.0)
+
+Repo-agnostic maintenance skills designed to be run **periodically** — on a cron, from CI, or by hand. Ships `agent-context-sync`: a periodic doctor that keeps AI-context files (`CLAUDE.md`, `AGENTS.md`, `.cursorrules`, `.github/copilot-instructions.md`) accurate, lean, and useful.
+
+**Skills**:
+- `/github-maintenance:agent-context-sync` — Verify every concrete claim in your AI-context files against the repo, lint against an opinionated quality spec, surface newly-added subsystems the docs miss, and open a PR (or print a report) with the minimum edits to restore health.
+
+**Highlights**:
+- **No-op when healthy** — safe to run weekly on a cron without producing churn.
+- **Conservative pruning** — only deletes claims it can programmatically prove are wrong; flags bloat without removing.
+- **Multi-file** — handles CLAUDE.md, AGENTS.md, `.cursorrules`, and `.github/copilot-instructions.md` together; reports cross-file divergence.
+- **Two modes** — `--dry-run` for report-only, default for branch + PR.
+
+**Usage**:
+```bash
+# Print a structured health report, no edits.
+/github-maintenance:agent-context-sync --dry-run
+
+# Apply edits, create a branch, open a PR.
+/github-maintenance:agent-context-sync
+```
+
+[View plugin documentation →](./plugins/github-maintenance/README.md)
+
 ## Usage
 
 After installation, use the plugin commands:
@@ -125,6 +154,10 @@ After installation, use the plugin commands:
 /security-reviewer
 /architect-reviewer
 /context-updater
+
+# GitHub Maintenance - periodic repo upkeep
+/github-maintenance:agent-context-sync --dry-run
+/github-maintenance:agent-context-sync
 ```
 
 ## Future Plugins
@@ -152,4 +185,4 @@ MIT - See [LICENSE](LICENSE) file for details.
 
 **Repository**: https://github.com/shaharia-lab/claude-power-user
 **Marketplace**: `shaharia-lab`
-**Version**: 1.1.0
+**Version**: 1.2.0
